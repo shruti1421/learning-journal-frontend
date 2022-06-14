@@ -1,21 +1,23 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
+import AuthContext from '../../context/auth/authContext';
 import AlertContext from '../../context/alert/AlertContext';
-import { useAuth, clearErrors, login } from '../../context/auth/AuthState';
 
-const Login = () => {
+const Login = props => {
   const alertContext = useContext(AlertContext);
-  const { setAlert } = alertContext;
+  const authContext = useContext(AuthContext);
 
-  const [authState, authDispatch] = useAuth();
-  const { error, isAuthenticated } = authState;
+  const { setAlert } = alertContext;
+  const { login, error, clearErrors, isAuthenticated } = authContext;
 
   useEffect(() => {
+
     if (error === 'Invalid Credentials') {
       setAlert(error, 'danger');
-      clearErrors(authDispatch);
+      clearErrors();
     }
-  }, [error, isAuthenticated, authDispatch, setAlert]);
+    // eslint-disable-next-line
+  }, [error, isAuthenticated, props.history]);
 
   const [user, setUser] = useState({
     email: '',
@@ -24,19 +26,20 @@ const Login = () => {
 
   const { email, password } = user;
 
-  const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
+  const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
 
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
     if (email === '' || password === '') {
       setAlert('Please fill in all fields', 'danger');
     } else {
-      login(authDispatch, {
+      login({
         email,
         password
       });
     }
   };
+
   if (isAuthenticated) return <Navigate to='/' />;
 
   return (

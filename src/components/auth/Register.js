@@ -1,21 +1,23 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
+import AuthContext from '../../context/auth/authContext';
 import AlertContext from '../../context/alert/AlertContext';
-import { useAuth, clearErrors, register } from '../../context/auth/AuthState';
 
-const Register = (props) => {
+const Register = props => {
   const alertContext = useContext(AlertContext);
-  const [authState, authDispatch] = useAuth();
-  const { error, isAuthenticated } = authState;
+  const authContext = useContext(AuthContext);
 
   const { setAlert } = alertContext;
+  const { register, error, clearErrors, isAuthenticated } = authContext;
 
   useEffect(() => {
-    if (error === 'User already exists') {
+
+    if (error === 'Invalid Credentials') {
       setAlert(error, 'danger');
-      clearErrors(authDispatch);
+      clearErrors();
     }
-  }, [error, isAuthenticated, props.history, setAlert, authDispatch]);
+    // eslint-disable-next-line
+  }, [error, isAuthenticated, props.history]);
 
   const [user, setUser] = useState({
     name: '',
@@ -24,18 +26,19 @@ const Register = (props) => {
     password2: ''
   });
 
-  const { name, email, password, password2 } = user;
+  const {name, email, password, password2 } = user;
 
-  const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
+  const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
 
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
     if (name === '' || email === '' || password === '') {
-      setAlert('Please enter all fields', 'danger');
-    } else if (password !== password2) {
-      setAlert('Passwords do not match', 'danger');
+      setAlert('Please fill in all fields', 'danger');
+    }
+    else if(password!==password2){
+      setAlert('Passwords do not match','danger');
     } else {
-      register(authDispatch, {
+      register({
         name,
         email,
         password
@@ -52,7 +55,7 @@ const Register = (props) => {
       </h1>
       <form onSubmit={onSubmit}>
         <div className='form-group'>
-          <label htmlFor='name'>Name</label>
+          <label htmlFor='name'>Email Address</label>
           <input
             id='name'
             type='text'
@@ -82,7 +85,6 @@ const Register = (props) => {
             value={password}
             onChange={onChange}
             required
-            minLength='6'
           />
         </div>
         <div className='form-group'>
@@ -94,7 +96,6 @@ const Register = (props) => {
             value={password2}
             onChange={onChange}
             required
-            minLength='6'
           />
         </div>
         <input
