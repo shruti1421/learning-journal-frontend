@@ -8,7 +8,8 @@ const PrivateRoute = ({ component: Component }) => {
   const { isAuthenticated, loading } = authContext;
   if (loading) return <Spinner />;
   if (isAuthenticated) return <Component />;
-  return <Navigate to='/login' />;
+  return <Navigate to='/landing' />;
 };
+
 
 export default PrivateRoute;
