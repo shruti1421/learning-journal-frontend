@@ -17,7 +17,7 @@ const Navbar = ({ title, icon }) => {
         <Fragment>
             <li>Hello { user && user.name }</li>
             <li>
-            <a onClick={onLogout} href="#/">
+            <a onClick={onLogout} href="/">
                <i className="fas fa-sign-out-alt"></i> <span className="hide-sm">Logout</span>
             </a>
             </li>
@@ -58,5 +58,4 @@ Navbar.defaultProps = {
     title: 'Contact Keeper',
     icon: 'fas fa-id-card-alt'
 } 
-
-export default Navbar;
+export default Navbar

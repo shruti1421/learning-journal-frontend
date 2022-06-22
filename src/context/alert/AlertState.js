@@ -12,7 +12,7 @@ import AlertReducer from './AlertReducer';
      const [state, dispatch] = useReducer(AlertReducer, initialState);
 
     //Set Alter
-    const setAlert = (msg,type, timeout=5000) => {
+    const setAlert = (msg,type, timeout=1000) => {
         const id = uuidv4();
 
         dispatch({
