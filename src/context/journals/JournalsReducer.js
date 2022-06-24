@@ -14,7 +14,6 @@ import {
   EDIT_JOURNAL_SUCCESS,
   ERROR,
   CLEAR_ERRORS,
-  TOGGLE_FAVORITE
 } from "../types";
 const JournalsReducer = (state, action) => {
   switch (action.type) {
@@ -76,13 +75,12 @@ const JournalsReducer = (state, action) => {
         category,
         content,
         dateCreated,
-        isFavorites,
         sharedWith
       };
     case EDIT_JOURNAL_BEGIN:
       return { ...state, isLoading: true };
     case EDIT_JOURNAL_SUCCESS:
-      return { ...state, isLoading: false, successMsg: action.payload };
+      return { ...state, isLoading: false, successMsg: action.payload};
     case EDIT_JOURNAL_ERROR:
       return { ...state, isLoading: false };
     case DELETE_JOURNAL_BEGIN:
@@ -95,9 +93,6 @@ const JournalsReducer = (state, action) => {
             ...state,
             //error: null
       }
-    case TOGGLE_FAVORITE:
-      return {...state,isLoading: true}
-
     default:
       return state;
   }

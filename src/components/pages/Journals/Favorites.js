@@ -2,8 +2,16 @@ import React, { useContext } from "react";
 import Wrapper from "../../../assets/wrappers/AllJournal";
 import JournalsContext from "../../../context/journals/JournalsContext";
 import SingleJournal from "./SingleJournal";
+import Loading from "../../layout/Loading";
 const Favorites=()=>{
-    const {journals}=useContext(JournalsContext)
+    
+    const {journals,isLoading}=useContext(JournalsContext)
+    if (isLoading) {
+      return <Loading center />;
+    }
+    if (journals == null) {
+      return <h3>0 journals</h3>;
+    }
     const filterFavorites=journals.filter(eachJournal => eachJournal.isFavorites===true)
     
     return(

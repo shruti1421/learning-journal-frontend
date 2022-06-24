@@ -18,14 +18,13 @@ import {
   DELETE_JOURNAL_BEGIN,
   ERROR,
   CLEAR_ERRORS,
-  TOGGLE_FAVORITE
 } from "../types";
 
 const initialState = {
   title: "",
   content: "",
   category: "",
-  isFavorites: false,
+  toggleButton: false,
   isEditing: false,
   editJournalId: "",
   showSidebar: false,
@@ -137,7 +136,7 @@ const toggleFavorite=async(id)=>{
       });
       dispatch({ type: EDIT_JOURNAL_SUCCESS, payload: data.data.msg });
       clearValues();
-      //getJournals()
+      getJournals()
      
     } catch (error) {
       if (error.response.status === 401) return;
@@ -204,6 +203,7 @@ const toggleFavorite=async(id)=>{
         journals: state.journals,
         alertError: state.alertError,
         successMsg: state.successMsg,
+        toggleButton:state.toggleButton,
         toggleSidebar,
         handleChange,
         clearValues,
