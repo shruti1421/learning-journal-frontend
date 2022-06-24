@@ -12,6 +12,8 @@ import {
   EDIT_JOURNAL_BEGIN,
   EDIT_JOURNAL_ERROR,
   EDIT_JOURNAL_SUCCESS,
+  ERROR,
+  CLEAR_ERRORS
 } from "../types";
 const JournalsReducer = (state, action) => {
   switch (action.type) {
@@ -77,11 +79,19 @@ const JournalsReducer = (state, action) => {
     case EDIT_JOURNAL_BEGIN:
       return { ...state, isLoading: true };
     case EDIT_JOURNAL_SUCCESS:
-      return { ...state, isLoading: false };
+      return { ...state, isLoading: false, successMsg: action.payload };
     case EDIT_JOURNAL_ERROR:
       return { ...state, isLoading: false };
     case DELETE_JOURNAL_BEGIN:
       return { ...state, isLoading: true };
+    case ERROR:
+      console.log(action.payload)
+      return {...state, alertError: action.payload};
+    case CLEAR_ERRORS:
+      return{
+            ...state,
+            //error: null
+      }
 
     default:
       return state;

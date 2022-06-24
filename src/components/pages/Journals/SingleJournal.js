@@ -8,7 +8,7 @@ import {HiOutlineStar,HiStar} from 'react-icons/hi'
 import Wrapper from "../../../assets/wrappers/SingleJournal";
 import AlertContext from "../../../context/alert/AlertContext";
 
-const SingleJournal = (journal) => {
+const SingleJournal = ({journal,isShared}) => {
   const {setAlert}=useContext(AlertContext)
   const {_id,title,content,dateCreated,category,lastModified,isFavorite}=journal
   const { setEditJournal,deleteJournal} = useContext(JournalsContext);
@@ -22,6 +22,7 @@ const SingleJournal = (journal) => {
         setAlert("Some Error Occured!","danger")
     }
   }
+
   
   return (
     <Wrapper>
@@ -34,7 +35,8 @@ const SingleJournal = (journal) => {
       </header>
       <div className="content">
         <p>{content}</p>
-        <footer>
+        {isShared&&
+          <footer>
           <div className="actions">
             <Link
               to="/edit-journal"
@@ -52,9 +54,12 @@ const SingleJournal = (journal) => {
             </button>
 
             {/* set sharing here */}
-            <button className="btn share-btn">
+            <Link 
+              to="/share-journal"
+              onClick={() => setEditJournal(_id)}
+              className="btn share-btn">
             <RiShareForwardLine/>
-            </button>
+            </Link>
 
            <button className="btn starred-btn">
             {!isFavorite?<HiOutlineStar/>:<HiStar/>}
@@ -62,6 +67,8 @@ const SingleJournal = (journal) => {
 
           </div>
         </footer>
+      }
+        
       </div>
     </Wrapper>
   );
