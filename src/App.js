@@ -12,12 +12,14 @@ import AuthState from './context/auth/AuthState'
 import AlertState from './context/alert/AlertState';
 import JournalState from './context/journals/JournalState';
 import {Dashboard,Favorites,SharedJournals,AddJournal,SharedLayout,EditJournal}  from './components/pages/Journals';
+import ShareJournal from './components/pages/Journals/ShareJournal';
 
 
 const App = () => {
   return (
+    <AlertState>
     <AuthState>
-      <AlertState>
+      
        <JournalState>
         <BrowserRouter>
           <Fragment>
@@ -34,6 +36,7 @@ const App = () => {
                     >
                       <Route index element={<Dashboard/>}/>
                       <Route path='add-journals' element={<AddJournal/>}/>
+                      <Route path='share-journal' element={<ShareJournal/>}/>
                       <Route path='shared-with-me' element={<SharedJournals/>}/>
                       <Route path='add-journals' element={<AddJournal/>}/>
                       <Route path='edit-journal' element={<EditJournal/>}/>
@@ -44,8 +47,9 @@ const App = () => {
           </Fragment>
         </BrowserRouter>
         </JournalState>
-      </AlertState>
+      
     </AuthState>
+    </AlertState>
   );
 }
 

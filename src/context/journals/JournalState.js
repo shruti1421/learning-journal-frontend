@@ -16,6 +16,8 @@ import {
   EDIT_JOURNAL_SUCCESS,
   EDIT_JOURNAL_ERROR,
   DELETE_JOURNAL_BEGIN,
+  ERROR,
+  CLEAR_ERRORS
 } from "../types";
 
 const initialState = {
@@ -27,8 +29,9 @@ const initialState = {
   editJournalId: "",
   showSidebar: false,
   isLoading: false,
-  //get all journals
   journals: null,
+  alertError:null,
+  successMsg: null
 };
 const url = "http://localhost:5000/api/journals";
 
@@ -95,12 +98,12 @@ const JournalState = ({ children }) => {
       const { title, category, content } = state;
 
       const editUrl = url + "/" + state.editJournalId;
-      await axios.put(editUrl, {
+      const data = await axios.put(editUrl, {
         title,
         category,
         content,
       });
-      dispatch({ type: EDIT_JOURNAL_SUCCESS });
+      dispatch({ type: EDIT_JOURNAL_SUCCESS, payload: data.data.msg });
       clearValues();
     } catch (error) {
       if (error.response.status === 401) return;
@@ -123,6 +126,48 @@ const JournalState = ({ children }) => {
     }
   };
 
+  const ShareJournal = async (email) =>{
+    dispatch({ type: EDIT_JOURNAL_BEGIN });
+
+    try {
+      //console.log(state.editJournalId);
+      const data = await axios.post(`http://localhost:5000/api/journals/share`+'/' + state.editJournalId, {email});
+      dispatch({ type: EDIT_JOURNAL_SUCCESS, payload:data.data.msg });
+      clearValues();
+    } catch (err) {
+      console.log(err.response.data)
+      dispatch({
+        type: ERROR,
+        payload: err.response.data.msg
+      });
+    }
+
+
+  }
+
+      //CLEAR ERRORS
+      const clearErrors = () => {
+        dispatch({type: CLEAR_ERRORS});
+    }
+
+  //Get shared journals
+  const getSharedJournals = async (user) =>{
+    dispatch({ GET_JOURNALS_BEGIN });
+    try {
+      const data = await axios.get('http://localhost:5000/api/journals/share');
+      dispatch({
+        type: GET_JOURNALS_SUCCESS,
+        payload: {
+          journals: data.data,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
+    
+  }
+
   return (
     <JournalContext.Provider
       value={{
@@ -135,6 +180,8 @@ const JournalState = ({ children }) => {
         isLoading: state.isLoading,
         showSidebar: state.showSidebar,
         journals: state.journals,
+        alertError: state.alertError,
+        successMsg: state.successMsg,
         toggleSidebar,
         handleChange,
         clearValues,
@@ -143,6 +190,9 @@ const JournalState = ({ children }) => {
         setEditJournal,
         editJournal,
         deleteJournal,
+        getSharedJournals,
+        ShareJournal,
+        clearErrors
       }}
     >
       {children}

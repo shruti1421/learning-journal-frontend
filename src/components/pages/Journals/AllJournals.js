@@ -20,7 +20,7 @@ const AllJournals = () => {
       <h3>{journals.length} journals found</h3>
       <div className="journals">
         {journals.map((eachJournal) => {
-          return <SingleJournal key={eachJournal._id} {...eachJournal} />;
+          return <SingleJournal key={eachJournal._id} journal={eachJournal} isShared={true} />;
         })}
       </div>
     </Wrapper>

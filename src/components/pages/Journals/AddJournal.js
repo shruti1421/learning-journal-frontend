@@ -26,6 +26,7 @@ const AddJournal = () => {
     }
     setAlert("New Journal Created", "success");
     createJournal();
+    clearValues();
   };
 
   return (

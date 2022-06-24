@@ -12,7 +12,7 @@ import AlertReducer from './AlertReducer';
      const [state, dispatch] = useReducer(AlertReducer, initialState);
 
     //Set Alter
-    const setAlert = (msg,type, timeout=1000) => {
+    const setAlert = (msg,type, timeout=300000) => {
         const id = uuidv4();
 
         dispatch({
@@ -20,7 +20,7 @@ import AlertReducer from './AlertReducer';
             payload: {msg, type, id}
         })
 
-        setTimeout(() => dispatch({type: REMOVE_ALERT, payload:id}),timeout)
+        setTimeout(() => dispatch({type: REMOVE_ALERT, payload:id}),1000)
     }
 
      return (

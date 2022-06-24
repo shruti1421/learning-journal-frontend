@@ -30,6 +30,7 @@ export const CREATE_JOURNAL_ERROR = 'CREATE_JOURNAL_ERROR'
 
 export const HANDLE_CHANGE='HANDLE_CHANGE'
 export const CLEAR_VALUES = 'CLEAR_VALUES'
+export const ERROR = 'ERROR';
 
 //get all journals
 export const GET_JOURNALS_BEGIN = 'GET_JOURNALS_BEGIN'
