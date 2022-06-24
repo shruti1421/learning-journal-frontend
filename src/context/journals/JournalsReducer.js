@@ -13,7 +13,8 @@ import {
   EDIT_JOURNAL_ERROR,
   EDIT_JOURNAL_SUCCESS,
   ERROR,
-  CLEAR_ERRORS
+  CLEAR_ERRORS,
+  TOGGLE_FAVORITE
 } from "../types";
 const JournalsReducer = (state, action) => {
   switch (action.type) {
@@ -66,7 +67,7 @@ const JournalsReducer = (state, action) => {
       const journal = state.journals.find(
         (journal) => journal._id === action.payload.id
       );
-      const { _id, title, content, dateCreated, category } = journal;
+      const { _id, title, content, dateCreated, category,isFavorites,sharedWith } = journal;
       return {
         ...state,
         isEditing: true,
@@ -75,6 +76,8 @@ const JournalsReducer = (state, action) => {
         category,
         content,
         dateCreated,
+        isFavorites,
+        sharedWith
       };
     case EDIT_JOURNAL_BEGIN:
       return { ...state, isLoading: true };
@@ -92,6 +95,8 @@ const JournalsReducer = (state, action) => {
             ...state,
             //error: null
       }
+    case TOGGLE_FAVORITE:
+      return {...state,isLoading: true}
 
     default:
       return state;
