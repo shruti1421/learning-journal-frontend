@@ -17,14 +17,14 @@ import {
   EDIT_JOURNAL_ERROR,
   DELETE_JOURNAL_BEGIN,
   ERROR,
-  CLEAR_ERRORS
+  CLEAR_ERRORS,
 } from "../types";
 
 const initialState = {
   title: "",
   content: "",
   category: "",
-  isFavorites: false,
+  toggleButton: false,
   isEditing: false,
   editJournalId: "",
   showSidebar: false,
@@ -126,6 +126,27 @@ const JournalState = ({ children }) => {
     }
   };
 
+const toggleFavorite=async(id)=>{
+    dispatch({ type: EDIT_JOURNAL_BEGIN });
+    try {
+      const { isFavorites } = state;
+      const favoriteToggleUrl=url+"/favorites/"+id
+      const data = await axios.put(favoriteToggleUrl, {
+       isFavorites
+      });
+      dispatch({ type: EDIT_JOURNAL_SUCCESS, payload: data.data.msg });
+      clearValues();
+      getJournals()
+     
+    } catch (error) {
+      if (error.response.status === 401) return;
+      dispatch({
+        type: EDIT_JOURNAL_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
+    }
+  }
+
   const ShareJournal = async (email) =>{
     dispatch({ type: EDIT_JOURNAL_BEGIN });
 
@@ -182,6 +203,7 @@ const JournalState = ({ children }) => {
         journals: state.journals,
         alertError: state.alertError,
         successMsg: state.successMsg,
+        toggleButton:state.toggleButton,
         toggleSidebar,
         handleChange,
         clearValues,
@@ -192,7 +214,8 @@ const JournalState = ({ children }) => {
         deleteJournal,
         getSharedJournals,
         ShareJournal,
-        clearErrors
+        clearErrors,
+        toggleFavorite
       }}
     >
       {children}

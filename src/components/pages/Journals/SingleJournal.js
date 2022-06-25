@@ -11,8 +11,8 @@ import AlertContext from "../../../context/alert/AlertContext";
 const SingleJournal = ({journal,isShared}) => {
   const {setAlert}=useContext(AlertContext)
   const {_id,title,content,dateCreated,category,lastModified,isFavorite}=journal
-  const { setEditJournal,deleteJournal} = useContext(JournalsContext);
-
+  const { setEditJournal,deleteJournal,toggleFavorite,toggleButton} = useContext(JournalsContext);
+ 
   const handleDelete=()=>{
     try{
     deleteJournal(_id);
@@ -22,8 +22,10 @@ const SingleJournal = ({journal,isShared}) => {
         setAlert("Some Error Occured!","danger")
     }
   }
-
-  
+  const handleFavorite=()=>{
+    toggleFavorite(_id)
+  }
+  console.log(isShared)
   return (
     <Wrapper>
       <header>
@@ -61,8 +63,8 @@ const SingleJournal = ({journal,isShared}) => {
             <RiShareForwardLine/>
             </Link>
 
-           <button className="btn starred-btn">
-            {!isFavorite?<HiOutlineStar/>:<HiStar/>}
+           <button className="btn starred-btn" onClick={handleFavorite}>
+            {!toggleButton?<HiOutlineStar/>:<HiStar/>}
            </button>
 
           </div>
