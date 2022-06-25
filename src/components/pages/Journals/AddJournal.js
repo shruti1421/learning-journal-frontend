@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import AlertContext from "../../../context/alert/AlertContext.js";
 import JournalsContext from "../../../context/journals/JournalsContext.js";
-import Wrapper from "../../../assets/wrappers/AddJournal.js";
+
 const AddJournal = () => {
   const { setAlert } = useContext(AlertContext);
   const {
@@ -30,7 +30,7 @@ const AddJournal = () => {
   };
 
   return (
-    <Wrapper>
+    
       <form className="form">
         <h3>add journal</h3>
         <div className="form-center">
@@ -48,19 +48,6 @@ const AddJournal = () => {
             />
           </div>
           <div className="form-row">
-            <label htmlFor="content" className="form-label">
-              Content
-            </label>
-
-            <input
-              type="textarea"
-              value={content}
-              name="content"
-              onChange={onChange}
-              className="form-input"
-            />
-          </div>
-          <div className="form-row">
             <label htmlFor="category" className="form-label">
               category
             </label>
@@ -73,6 +60,20 @@ const AddJournal = () => {
               className="form-input"
             />
           </div>
+          <div className="addJournalForm">
+            <div className="textarea-group">
+              <textarea
+                value={content}
+                name="content"
+                onChange={onChange}
+              ></textarea>
+              <div className="bar"></div>
+              <label htmlFor="content" className="label">
+                Type here...
+              </label>
+            </div>
+          </div>
+          
           <div className="btn-container">
             <button
               className="btn btn-block submit-btn"
@@ -83,6 +84,7 @@ const AddJournal = () => {
               CREATE
             </button>
           </div>
+
           <div className="btn-container">
             <button
               className="btn btn-block clear-btn"
@@ -96,7 +98,8 @@ const AddJournal = () => {
           </div>
         </div>
       </form>
-    </Wrapper>
+
+
   );
 };
 
