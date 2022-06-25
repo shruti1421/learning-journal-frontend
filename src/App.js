@@ -17,8 +17,8 @@ import ShareJournal from './components/pages/Journals/ShareJournal';
 
 const App = () => {
   return (
-    <AlertState>
     <AuthState>
+    <AlertState>
       
        <JournalState>
         <BrowserRouter>
@@ -48,8 +48,8 @@ const App = () => {
         </BrowserRouter>
         </JournalState>
       
-    </AuthState>
     </AlertState>
+    </AuthState>
   );
 }
 

@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import AlertContext from "../../../context/alert/AlertContext.js";
 import JournalsContext from "../../../context/journals/JournalsContext.js";
-import Wrapper from "../../../assets/wrappers/AddJournal.js";
 
 const EditJournal = () => {
   const {setAlert}=useContext(AlertContext)
@@ -26,7 +25,7 @@ const EditJournal = () => {
   };
 
   return (
-    <Wrapper>
+
     <form className="form">
       <h3>{"edit journal"} </h3>
       <div className="form-center">
@@ -43,19 +42,19 @@ const EditJournal = () => {
             className="form-input"
           />
         </div>
-        <div className="form-row">
-          <label htmlFor="content" className="form-label">
-            Content
-          </label>
-
-          <input
-            type="textarea"
-            value={content}
-            name="content"
-            onChange={onChange}
-            className="form-input"
-          />
-        </div>
+        <div className="addJournalForm">
+            <div className="textarea-group">
+              <textarea
+                value={content}
+                name="content"
+                onChange={onChange}
+              ></textarea>
+              <div className="bar"></div>
+              <label htmlFor="content" className="label">
+                Type here...
+              </label>
+            </div>
+          </div>
         <div className="form-row">
           <label htmlFor="category" className="form-label">
             category
@@ -90,7 +89,6 @@ const EditJournal = () => {
           </button>
       </div>
     </form>
-    </Wrapper>
   );
 };
 export default EditJournal;

@@ -20,7 +20,7 @@ import AlertReducer from './AlertReducer';
             payload: {msg, type, id}
         })
 
-        setTimeout(() => dispatch({type: REMOVE_ALERT, payload:id}),1000)
+        setTimeout(() => dispatch({type: REMOVE_ALERT, payload:id}),10000)
     }
 
      return (
