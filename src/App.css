@@ -2,6 +2,7 @@
 ::after,
 ::before {
   box-sizing: border-box;
+  margin: 0;
 }
 
 /* fonts */
@@ -13,19 +14,19 @@ html {
 
 :root {
   /* colors */
-  --primary-50: #e0fcff;
-  --primary-100: #bef8fd;
-  --primary-200: #87eaf2;
-  --primary-300: #54d1db;
-  --primary-400: #38bec9;
-  --primary-500: #2cb1bc;
-  --primary-600: #14919b;
-  --primary-700: #0e7c86;
-  --primary-800: #0a6c74;
-  --primary-900: #044e54;
+  --primary-50: white;
+  --primary-100: #FDCED9;
+  --primary-200: #FDB7C8;
+  --primary-300: #FB9FB6;
+  --primary-400: #FD87A4;
+  --primary-500: #ec6f87;
+  --primary-600: #F5375C;
+  --primary-700: #F5375C;
+  --primary-800: #FB2F60;
+  --primary-900: #F70D45;
 
   /* grey */
-  --grey-50: #f0f4f8;
+  --grey-50: #F5EBEB;
   --grey-100: #d9e2ec;
   --grey-200: #bcccdc;
   --grey-300: #9fb3c8;
@@ -300,6 +301,28 @@ ul {
 .full-page {
   min-height: 100vh;
 }
+
+.container-landing {
+  width: var(--fluid-width);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  margin-bottom: 1rem;
+
+}
+
+.text-center {
+  text-align: center;
+}
+
+.info-page p{
+  padding-left: 42%; padding-right: 0;
+}
+
+.notes-img{
+  margin:auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
 /* Add Journal form */
 
 @import url("https://fonts.googleapis.com/css?family=Lato|Merriweather");
@@ -361,7 +384,7 @@ ul {
 .addJournalForm  .textarea-group .bar {
   width: 100%;
   height: 3px;
-  background: #54d1db;
+  background: var( --primary-600);
   top: calc(100% - 7px);
   position: absolute;
   transform: scaleX(0);
