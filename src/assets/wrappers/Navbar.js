@@ -43,7 +43,7 @@ const Wrapper = styled.nav`
     top: 40px;
     left: 0;
     width: 100%;
-    background: var(--primary-100);
+    background: var(--primary-50);
     box-shadow: var(--shadow-2);
     padding: 0.5rem;
     text-align: center;
@@ -56,7 +56,7 @@ const Wrapper = styled.nav`
   .dropdown-btn {
     background: transparent;
     border-color: transparent;
-    color: var(--primary-500);
+    color: var(--primary-600);
     letter-spacing: var(--letterSpacing);
     text-transform: capitalize;
     cursor: pointer;
