@@ -17,7 +17,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 const SingleJournal = ({journal,isShared}) => {
   const {setAlert}=useContext(AlertContext)
-  const {_id,title,content,dateCreated,category,lastModified}=journal
+  const {_id,title,content,dateCreated,category,lastModified,isFavorites}=journal
   const { setEditJournal,deleteJournal,toggleFavorite,toggleButton} = useContext(JournalsContext);
   
   const [open, setOpen] = React.useState(false);
@@ -124,7 +124,7 @@ const SingleJournal = ({journal,isShared}) => {
         </Link>
 
         <button className="btn starred-btn" onClick={handleFavorite}>
-          {!toggleButton ? <HiOutlineStar /> : <HiStar />}
+          {isFavorites ? <HiStar />:<HiOutlineStar /> }
         </button>
       </div>
     </footer>
