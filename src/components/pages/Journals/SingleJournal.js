@@ -6,7 +6,6 @@ import {FiEdit3} from 'react-icons/fi'
 import {MdDeleteOutline} from 'react-icons/md'
 import {RiShareForwardLine} from 'react-icons/ri'
 import {HiOutlineStar,HiStar} from 'react-icons/hi'
-import {GrFormView} from 'react-icons/gr'
 import Wrapper from "../../../assets/wrappers/SingleJournal";
 import AlertContext from "../../../context/alert/AlertContext";
 import Button from '@mui/material/Button';
@@ -17,8 +16,8 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 const SingleJournal = ({journal,isShared}) => {
   const {setAlert}=useContext(AlertContext)
-  const {_id,title,content,dateCreated,category,lastModified,isFavorites}=journal
-  const { setEditJournal,deleteJournal,toggleFavorite,toggleButton} = useContext(JournalsContext);
+  const {_id,title,content,category,lastModified,isFavorites}=journal
+  const { setEditJournal,deleteJournal,toggleFavorite} = useContext(JournalsContext);
   
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState('paper');

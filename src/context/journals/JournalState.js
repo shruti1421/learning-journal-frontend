@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer} from "react";
 import axios from "axios";
 import JournalContext from "./JournalsContext";
 import JournalsReducer from "./JournalsReducer";
@@ -33,7 +33,7 @@ const initialState = {
   alertError:null,
   successMsg: null
 };
-const url = "http://localhost:5000/api/journals";
+const url = "https://learning-journal-backend.herokuapp.com/api/journals";
 
 const JournalState = ({ children }) => {
   const [state, dispatch] = useReducer(JournalsReducer, initialState);
@@ -152,7 +152,7 @@ const toggleFavorite=async(id)=>{
 
     try {
       //console.log(state.editJournalId);
-      const data = await axios.post(`http://localhost:5000/api/journals/share`+'/' + state.editJournalId, {email});
+      const data = await axios.post(url+`/share/`+ state.editJournalId, {email});
       dispatch({ type: EDIT_JOURNAL_SUCCESS, payload:data.data.msg });
       clearValues();
     } catch (err) {
@@ -175,7 +175,7 @@ const toggleFavorite=async(id)=>{
   const getSharedJournals = async (user) =>{
     dispatch({ GET_JOURNALS_BEGIN });
     try {
-      const data = await axios.get('http://localhost:5000/api/journals/share');
+      const data = await axios.get(url+'/share');
       dispatch({
         type: GET_JOURNALS_SUCCESS,
         payload: {
