@@ -90,8 +90,7 @@ const JournalsReducer = (state, action) => {
       return {...state, alertError: action.payload};
     case CLEAR_ERRORS:
       return{
-            ...state,
-            //error: null
+            ...state
       }
     default:
       return state;

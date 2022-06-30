@@ -50,6 +50,7 @@ const JournalState = ({ children }) => {
     dispatch({ type: CLEAR_VALUES });
   };
 
+  //Add Journal
   const createJournal = async () => {
     dispatch({ CREATE_JOURNAL_BEGIN });
     try {
@@ -71,6 +72,7 @@ const JournalState = ({ children }) => {
     }
   };
 
+  //Get Journal
   const getJournals = async () => {
     dispatch({ GET_JOURNALS_BEGIN });
     try {
@@ -87,10 +89,10 @@ const JournalState = ({ children }) => {
   };
 
   const setEditJournal = (id) => {
-    //console.log(id)
     dispatch({ type: SET_EDIT_JOURNAL, payload: { id } });
   };
 
+  //Update Journal
   const editJournal = async () => {
     dispatch({ type: EDIT_JOURNAL_BEGIN });
 
@@ -116,7 +118,7 @@ const JournalState = ({ children }) => {
   // DELETE JOURNAL
   const deleteJournal = async (journalId) => {
     const deleteUrl = url + "/" + journalId;
-    //console.log(deleteUrl)
+    
     dispatch({ type: DELETE_JOURNAL_BEGIN });
     try {
       await axios.delete(deleteUrl);
@@ -126,7 +128,8 @@ const JournalState = ({ children }) => {
     }
   };
 
-const toggleFavorite=async(id)=>{
+  //Toggle Favorite  
+  const toggleFavorite=async(id)=>{
     dispatch({ type: EDIT_JOURNAL_BEGIN });
     try {
       const { isFavorites } = state;
@@ -147,11 +150,12 @@ const toggleFavorite=async(id)=>{
     }
   }
 
+  //Share Journal
   const ShareJournal = async (email) =>{
     dispatch({ type: EDIT_JOURNAL_BEGIN });
 
     try {
-      //console.log(state.editJournalId);
+      
       const data = await axios.post(url+`/share/`+ state.editJournalId, {email});
       dispatch({ type: EDIT_JOURNAL_SUCCESS, payload:data.data.msg });
       clearValues();
@@ -166,10 +170,10 @@ const toggleFavorite=async(id)=>{
 
   }
 
-      //CLEAR ERRORS
-      const clearErrors = () => {
+  //CLEAR ERRORS
+  const clearErrors = () => {
         dispatch({type: CLEAR_ERRORS});
-    }
+  }
 
   //Get shared journals
   const getSharedJournals = async (user) =>{

@@ -31,10 +31,6 @@ const AuthState = props => {
 
     const [state,dispatch] = useReducer(authReducer, initialState);
 
-    // useEffect(() => {
-    //   setAuthToken(state.token);
-    // });
-
     if(localStorage.token){
       setAuthToken(localStorage.token);
     }
@@ -42,7 +38,6 @@ const AuthState = props => {
 
     //LOAD USER
     const loadUser = async () => {
-        //@todo - load token into global headers
 
         if(localStorage.token){
             setAuthToken(localStorage.token);
