@@ -1,15 +1,8 @@
-export const GET_CONTACTS = 'GET_CONTACTS';
-export const ADD_CONTACT = 'ADD_CONTACT';
-export const DELETE_CONTACT = 'DELETE_CONTACT';
-export const SET_CURRENT = 'SET_CURRENT';
-export const CLEAR_CURRENT = 'CLEAR_CURRENT';
-export const UPDATE_CONTACT = 'UPDATE_CONTACT';
-export const FILTER_CONTACTS = 'FILTER_CONTACTS';
-export const CLEAR_CONTACTS = 'CLEAR_CONTACTS';
-export const CLEAR_FILTER = 'CLEAR_FILTER';
-export const CONTACT_ERROR = 'CONTACT_ERROR';
+//Alert
 export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
+
+//Authentication
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const USER_LOADED = 'USER_LOADED';
@@ -32,15 +25,15 @@ export const HANDLE_CHANGE='HANDLE_CHANGE'
 export const CLEAR_VALUES = 'CLEAR_VALUES'
 export const ERROR = 'ERROR';
 
-//get all journals
+//Get all journals
 export const GET_JOURNALS_BEGIN = 'GET_JOURNALS_BEGIN'
 export const GET_JOURNALS_SUCCESS = 'GET_JOURNALS_SUCCESS'
 
-//edit journals
+//Edit journals
 export const SET_EDIT_JOURNAL = 'SET_EDIT_JOURNAL'
 export const EDIT_JOURNAL_BEGIN='EDIT_JOURNAL_BEGIN'
 export const EDIT_JOURNAL_SUCCESS='EDIT_JOURNAL_SUCCESS'
 export const EDIT_JOURNAL_ERROR='EDIT_JOURNAL_ERROR'
 
-//delete journals
+//Delete journals
 export const DELETE_JOURNAL_BEGIN='DELETE_JOURNAL_BEGIN'
