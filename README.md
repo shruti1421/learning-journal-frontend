@@ -11,13 +11,13 @@ It is a highly scalable, free and high performant one stop solution to:
 - Create your favorite list 
 
 # Application Links
+|Code| Repo Links |Deployment Link
+| :-------- | :------- | :----|
+| Frontend| [Check Here](https://github.com/shruti1421/learning-journal-frontend)|[Check Here](https://learning-journal-app.netlify.app/)|
+| Backend| [Check Here](https://github.com/shruti1421/learning-journal-backend)|[Check Here](https://learning-journal-backend.herokuapp.com/)|
 
-Frontend Code -> [https://github.com/shruti1421/learning-journal-frontend](https://github.com/shruti1421/learning-journal-frontend)
-<br>
-Deployed URL -> [https://learning-journal-app.netlify.app/](https://learning-journal-app.netlify.app/)
-<br>
-Backend Code -> [https://github.com/shruti1421/learning-journal-backend](https://github.com/shruti1421/learning-journal-backend)
-
+# API Reference
+ [API Documentation](https://github.com/shruti1421/learning-journal-backend/blob/main/API_DOCS.md)
 # Tech Stack
 
 <b>Frontned</b>: Reactjs
