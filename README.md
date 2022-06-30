@@ -1,7 +1,7 @@
-# Learning Journal App
-[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)]
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)] 
-[![Made With Love](https://img.shields.io/badge/Made%20With-Love-orange.svg)]
+# [Learning Journal App](https://learning-journal-app.netlify.app/)
+![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)
+![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)
+![Made With Love](https://img.shields.io/badge/Made%20With-Love-orange.svg)
 
 Learning new things is fun, but do you keep a track of what you learned daily? Learning Journal helps you to keep track of your daily learnings, share it with your friends and get motiviated from others journey!
 It is a highly scalable, free and high performant one stop solution to:
