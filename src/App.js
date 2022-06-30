@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import './App.css'
 import { BrowserRouter , Routes, Route } from 'react-router-dom'
 import Home from './components/pages/Home';
-import About from './components/pages/About';
+import Error from './components/pages/Error';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alerts from './components/layout/Alerts';
@@ -23,12 +23,9 @@ const App = () => {
        <JournalState>
         <BrowserRouter>
           <Fragment>
-               
-              {/* <div className='container'> */}
                 <Alerts/>
                 <Routes>
                     <Route exact path="/landing" element={<Home/>}/>
-                    <Route exact path="/about" element={<About/>}/>
                     <Route exact path="/register" element={<Register/>}/>
                     <Route exact path="/login" element={<Login/>}/>
 
@@ -42,8 +39,8 @@ const App = () => {
                       <Route path='edit-journal' element={<EditJournal/>}/>
                       <Route path='favorites' element={<Favorites/>}/>
                     </Route>
+                    <Route path="*" element={<Error/>}/>
                 </Routes>
-              {/* </div> */}
           </Fragment>
         </BrowserRouter>
         </JournalState>

@@ -15,7 +15,7 @@ import {
 
 } from '../types';
 
-
+const url='https://learning-journal-backend.herokuapp.com/api'
 const user=localStorage.getItem('user')
 const token=localStorage.getItem('token')
 
@@ -49,7 +49,7 @@ const AuthState = props => {
         }
 
         try {
-            const res = await axios.get('http://localhost:5000/api/auth');
+            const res = await axios.get(url+'/auth');
 
             dispatch({type: USER_LOADED, payload: res.data});
         } catch (error) {
@@ -70,7 +70,7 @@ const AuthState = props => {
           }
         };
         try {
-          const res = await axios.post('http://localhost:5000/api/users', formData, config);
+          const res = await axios.post(url+'/users', formData, config);
     
           dispatch({
             type: REGISTER_SUCCESS,
@@ -94,7 +94,7 @@ const AuthState = props => {
           }
         };
         try {
-          const res = await axios.post('http://localhost:5000/api/auth', formData, config);
+          const res = await axios.post(url+'/auth', formData, config);
     
           dispatch({
             type: LOGIN_SUCCESS,

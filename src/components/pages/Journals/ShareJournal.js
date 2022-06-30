@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import AlertContext from "../../../context/alert/AlertContext.js";
 import JournalsContext from "../../../context/journals/JournalsContext.js";
-import Wrapper from "../../../assets/wrappers/AddJournal.js";
-
 const ShareJournal = () => {
 
   const { setAlert } = useContext(AlertContext);

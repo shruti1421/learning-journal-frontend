@@ -3,5 +3,4 @@ import SmallSidebar from './SmallSidebar.js'
 import Alerts from './Alerts.js'
 import NavLinks from './NavLinks.js'
 import Spinner from './Spinner.js'
-import Logo from './Logo.js'
-export {BigSidebar,SmallSidebar,NavLinks,Alerts,Spinner,Logo}
+export {BigSidebar,SmallSidebar,NavLinks,Alerts,Spinner}
