@@ -3,7 +3,7 @@
 ![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)
 ![Made With Love](https://img.shields.io/badge/Made%20With-Love-orange.svg)
 
-Learning new things is fun, but do you keep a track of what you learned daily? Learning Journal helps you to keep track of your daily learnings, share it with your friends and get motiviated from others journey!
+Learning new things is fun, but do you keep a track of what you learned daily? Learning Journal helps you to keep track of your daily learnings, share it with your friends and get motivated from others journey!
 It is a highly scalable, free and high performant one stop solution to:
 - Upload journals 
 - Share with your friends 
