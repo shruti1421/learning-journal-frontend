@@ -33,7 +33,7 @@ const initialState = {
   alertError:null,
   successMsg: null
 };
-const url = "https://learning-journal-backend.herokuapp.com/api/journals";
+const url = "https://learning-journal-backend.onrender.com//api/journals";
 
 const JournalState = ({ children }) => {
   const [state, dispatch] = useReducer(JournalsReducer, initialState);

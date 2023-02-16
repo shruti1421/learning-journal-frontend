@@ -15,7 +15,7 @@ import {
 
 } from '../types';
 
-const url='https://learning-journal-backend.herokuapp.com/api'
+const url='https://learning-journal-backend.onrender.com/api'
 const user=localStorage.getItem('user')
 const token=localStorage.getItem('token')
 
